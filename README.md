@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/214063/23213764/78ade038-f90c-11e6-8208-4fcade5f3832.png" width="60%">
 </p>
@@ -403,3 +404,10 @@ AMI would not exist without them:
 ### 2016
 - [Volume Visualization Tools for Medical Applications in Ubiquitous Platforms - Arbelaiz et al. - LNICST 2016 (article)](https://link.springer.com/chapter/10.1007/978-3-319-49655-9_54)
 - [Interoperable communication of quantitative image analysis results using DICOM standard (DICOM4QI) - Fedorov et al. - RSNA 2016 (poster)](https://docs.google.com/presentation/d/16mZbPiXqU7tKTRAcB7bnP1RGybBLqF-O0319raUWYHo/edit#slide=id.p)
+=======
+# UPCI-CoSBBI
+Medical Imaging Visualization and Interaction
+
+gazestuff.py is an altered version of code sent to me by Andrew King.  This is built off of the Gaze SDK which has dependancies Cython,
+and Python 2.7. 
+>>>>>>> 1895de41e45b058ee3d8f6db77787403703ca602
