@@ -1,0 +1,44 @@
+
+
+<DOCTYPE! html>
+<meta charset="utf-8" /> 
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+// canvas = document.getElementById("myCanvas")
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+
+
+window.setInterval(function start() {
+$.getJSON("http://localhost:3000/data", function(json){
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.clearRect(0, 0, c.width, c.height);
+ctx.fillRect(json.location.xCoordinate - 15, json.location.yCoordinate - 15,30,30);
+ctx.stroke();
+}, 200)
+})
+
+
+
+</script>
+
+
+
+</head>
+
+<body>
+
+<canvas id="myCanvas" width="1300" height="800" style="border: 1px solid black"></canvas>
+    
+</body>
+
+
+
+
+
+</html>

@@ -21,7 +21,7 @@ server.register(require('inert'), (err) => {
 
     server.route({
         method: 'GET',
-        path: '/hi',
+        path: '/data',
         handler: function (request, reply) {
             reply.file('eyetrackingdata.json');
         }
