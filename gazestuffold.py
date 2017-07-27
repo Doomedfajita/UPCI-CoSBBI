@@ -72,7 +72,7 @@ def start_eye_stream(pat_id='0'):
             print(output)
 
             try:
-                with open("C:\\xampp\\htdocs\\eyetrackingdata.json", "w") as f:
+                with open("C:\Users\sayba_000\Desktop\UPCI\Project\eyetrackingdata.json", "w") as f:
                     f.write(output)
             except:
                 pass
