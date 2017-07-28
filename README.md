@@ -4,26 +4,27 @@ Javascript app, integrating eyetracking and medical data visualization to create
 >>gazestuff.py is an altered version of code originally written by Andrew King.  This is built off of the Gaze SDK which has dependancies Cython,
 and Python 2.7. 
 
-###Roadmap:
-AMI.js in browser:  ✅
-Eyetracking visualization in browser: ✅
-Refine Eyetracking Accuracy:  ❌
-Eyetracking visualization overlay in AMI.js:  ❌
-Canvas open on medical image:  ❌
-Export coordinates (x,y,t) relative to image:  ❌ 
-Calculate fixations using algorithm:  ❌
-Associate fixations with heatmap/ranking system:  ❌
-Installation package:  ❌
-Docs: ❌
+### Roadmap:
+* AMI.js in browser:  ✅
+* Eyetracking visualization in browser: ✅
+* Refine Eyetracking Accuracy:  ❌
+* Eyetracking visualization overlay in AMI.js:  ❌
+* Canvas open on medical image:  ❌
+* Export coordinates (x,y,t) relative to image:  ❌ 
+* Calculate fixations using algorithm:  ❌
+* Associate fixations with heatmap/ranking system:  ❌
+* Installation package:  ❌
+* Docs: ❌
 
-###Usage:
+
+### Usage:
 -----------------------------------
-#####Pre-requisites:
+##### Pre-requisites:
 *Bash Ubuntu on Windows, not necessary for eyetracking, but necessary for ami.js
 *Windows 10
 *Python 2.7
 -----------------------------------
-#####Instructions for eye tracking visualization:
+##### Instructions for eye tracking visualization:
 1. Download gazesdk from balancana
 1. Install AMI.js (this requires node, among other things.  See their git @ FNNDSC)
 1. Check to make sure node is up to date
