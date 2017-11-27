@@ -22,7 +22,7 @@ def start_eye_stream(pat_id='0'):
     t.start_tracking()
 
     listOfFixations = []
-    window = {}
+    window = []
     xPrev = 0
     yPrev = 0
     fixNum = 0
@@ -59,7 +59,7 @@ def start_eye_stream(pat_id='0'):
             if ((currentX - xPrev)**(2) + (currentY - yPrev)**(2))**(.5) > 500:
                 if window:
                     listOfFixations.append(window)
-                    window = {}
+                    window = []
                     fixNum += 1
                     counter = 0
                 else:
@@ -68,12 +68,7 @@ def start_eye_stream(pat_id='0'):
                 yPrev = currentY
 
             elif ((currentX - xPrev)**(2) + (currentY - yPrev)**(2))**(.5) < 100:
-                
-                window[str(fixNum) + str(counter)] = {
-                    'xCoordinate': currentX,
-                    'yCoordinate': currentY
-                }
-                counter += 1
+                window.append([currentX, currentY, fixNum])
 
 
             #output = json.dumps(coordinates)
