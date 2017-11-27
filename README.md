@@ -41,7 +41,7 @@ and Python 2.7.
 #Patch Notes:
 
 App #2 (7/27/17):  Integrated server script within app running on localhost:3000.  Path to eyetrackingdata.json is localhost:3000/data.  Fixed issues with app compatibility.  Still having issues with window resize, fix coming soon.
-
+App #3 (7/27/17):  Fixed window size, urges user to go fullscreen.  Readme update.
 
 
 

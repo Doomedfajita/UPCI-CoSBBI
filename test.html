@@ -4,41 +4,50 @@
 <meta charset="utf-8" /> 
 
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-window.setInterval(function start() {
-$.getJSON("http://localhost:3000/data", function(json){
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-ctx.canvas.width  = window.innerWidth - 20;
-ctx.canvas.height = window.innerHeight - 20;
-ctx.clearRect(0, 0, c.width, c.height);
-ctx.fillRect(json.location.xCoordinate - 15, json.location.yCoordinate - 15,30,30);
-ctx.stroke();
-}, 200)
-})
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            window.setInterval(function start() {
+            $.getJSON("http://localhost:3000/data", function(json){
+            var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
+            ctx.canvas.width  = window.innerWidth -20;
+            ctx.canvas.height = window.innerHeight -30;
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.fillRect(json.location.xCoordinate-100, json.location.yCoordinate-100,50,50);
+            ctx.stroke();
+            }, 200)
+            })
+
+            // window.onload = function() {
+            //     var http = new XMLHttpRequest();
+            //     http.open("GET", "data/tweets.json", true)
+            //     http.send();
+            //     console.log(http)
+                
+
+            // };
 
 
-</script>
+        </script>
 
-
-</head>
+    </head>
+    
 
 <body>
-<div class="alert">
-    <button id="clicky">
-        "Click to go fullscreen.  Please go fullscreen"
+    <div class="alert">
+        <button id="clicky">
+            "Click to go fullscreen.  Please go fullscreen"
 
-    </button>
+        </button>
 
 
-</div>
+    </div>
 <canvas id="myCanvas" style="border: 1px solid black"></canvas>
 <script>
 
 myButton = document.getElementById("clicky");
-if (myButton){
+if (myButton) {
 myButton.addEventListener("click", function() {
     var el = document.documentElement,
       rfs = el.requestFullscreen

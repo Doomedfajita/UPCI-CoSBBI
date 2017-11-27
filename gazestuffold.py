@@ -2,26 +2,7 @@ from gazesdk import *
 import time
 import sys
 import json
-
-
-    #url = get_connected_eye_tracker()
-    #t = Tracker(url)
-    #t.run_event_loop()
-
-    #t.connect()
-    #t.start_tracking()
-
-    #while True:
-        #data = t.event_queue.get()
-        #time.sleep(1)
-        #print (data.left.gaze_point_on_display_normalized, 
-               #data.right.gaze_point_on_display_normalized)
-        #t.event_queue.task_done()
-
-    #t.stop_tracking()
-    #t.disconnect()
-
-    #t.break_event_loop()
+import random
 
 def start_eye_stream(pat_id='0'):
     """
@@ -40,10 +21,15 @@ def start_eye_stream(pat_id='0'):
     t.connect()
     t.start_tracking()
 
+    listOfFixations = []
+    window = {}
+    xPrev = 0
+    yPrev = 0
+    fixNum = 0
+    counter = 0
+    
     while True:
         try:
-            #curr_time = time.time()
-            #while curr_time + .05  > time.time():
             data = t.event_queue.get()
             leftX = data.left.gaze_point_on_display_normalized[0]
             rightX = data.right.gaze_point_on_display_normalized[0]
@@ -58,24 +44,46 @@ def start_eye_stream(pat_id='0'):
                   if rightY:	y = (leftY+rightY)/2.0
                   else:	y = leftY
 
-            computeX = ((leftX + rightX)/ 2) * 1920
-            computeY = ((leftY + rightY)/ 2) * 1080
+            currentX = ((leftX + rightX)/ 2) * 1920
+            currentY = ((leftY + rightY)/ 2) * 1080
 
-            coordinates = {}
+            # coordinates = {}
 
-            coordinates["location"] = {
-                'xCoordinate': computeX,
-                'yCoordinate': computeY
-            }
+            # coordinates["location"] = {
+            #     'xCoordinate': currentX,
+            #     'yCoordinate': currentY
+            # }
 
-            output = json.dumps(coordinates)
-            print(output)
 
-            try:
-                with open("C:\Users\sayba_000\Desktop\UPCI\Project\eyetrackingdata.json", "w") as f:
-                    f.write(output)
-            except:
-                pass
+            #Just remember that you are appending fixations as 
+            if ((currentX - xPrev)**(2) + (currentY - yPrev)**(2))**(.5) > 500:
+                if window:
+                    listOfFixations.append(window)
+                    window = {}
+                    fixNum += 1
+                    counter = 0
+                else:
+                    pass 
+                xPrev = currentX
+                yPrev = currentY
+
+            elif ((currentX - xPrev)**(2) + (currentY - yPrev)**(2))**(.5) < 100:
+                
+                window[str(fixNum) + str(counter)] = {
+                    'xCoordinate': currentX,
+                    'yCoordinate': currentY
+                }
+                counter += 1
+
+
+            #output = json.dumps(coordinates)
+            #print(output)
+
+            # try:
+            #     with open("C:\Users\sayba_000\Desktop\UPCI\Project\eyetrackingdata.json", "w") as f:
+            #         f.write(output)
+            # except:
+            #     pass
 
             #file = open("eyetrackingdata.txt", "w")
             #file.write(str(computeX) + ',' + str(computeY) + ',' + str(time.time()))
@@ -89,6 +97,7 @@ def start_eye_stream(pat_id='0'):
 
 
         except KeyboardInterrupt:
+            print(listOfFixations)
             print '\nEye Tracking Terminated'
             t.stop_tracking()
             t.disconnect()

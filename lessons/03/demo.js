@@ -184,19 +184,8 @@ loader.load(file)
     camera.canvas = canvas;
     camera.update();
     camera.fitBox(2);
-})
-.catch(function(error) {
+}).catch(function(error) {
     window.console.log('oops... something went wrong...');
     window.console.log(error);
 });
-
-file = "eyetrackingdata.txt"
-var reader = new FileReader();
-
-    reader.onload = function(e) {
-        var text = reader.result;                 // the entire file
-        var str_array = str.split(',');
-        console.log(str_array)}
-
-
 
